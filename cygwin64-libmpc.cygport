@@ -1,0 +1,26 @@
+CROSS_HOST="x86_64-pc-cygwin"
+inherit cross
+
+NAME="cygwin64-libmpc"
+VERSION=1.0.1
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="MPC library for Cygwin 64bit toolchain"
+DESCRIPTION="Gnu Mpc is a C library for the arithmetic of complex numbers with
+arbitrarily high precision and correct rounding of the result. It extends the
+principles of the IEEE-754 standard for fixed precision real floating point
+numbers to complex numbers, providing well-defined semantics for every
+operation. At the same time, speed of operation at high precision is a major
+design goal."
+HOMEPAGE="http://www.multiprecision.org/"
+SRC_URI="http://www.multiprecision.org/mpc/download/mpc-${VERSION}.tar.gz"
+SRC_DIR="mpc-${VERSION}"
+
+src_install() {
+	cd ${B}
+	cyginstall
+
+	rm -fr ${D}${CROSS_DATADIR}/info/
+}
+
+KEEP_LA_FILES="none"
